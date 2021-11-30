@@ -1,3 +1,5 @@
+console.log('WARSZTAT - Zapis do newslettera!')
+
 let newsletterForm = document.getElementById('newsletter-form');
 let allAgreechx = document.getElementById('all-agree');
 
@@ -12,35 +14,34 @@ const validate = (event) => {
 
     if (txtName.value.trim() === '') {
         let liError = document.createElement('li');
-        liError.innerText = 'Wpisz Imie i nazwisko!'
+        liError.innerText = 'Wpisz Imie i nazwisko!';
+        errors.appendChild(liError);
         
-        errors.appendChild(liError)
-        console.log('Wpisz Imię i nazwisko!');
     }
 
-    if (!txtEmail.value.trim() === '') {
+    if (txtEmail.value.trim() === '') {
         let liError = document.createElement('li');
         liError.innerText = 'Wpisz adres e-mail!';
         errors.appendChild(liError);
-}
+
     }
 
-    if (txtEmail.value.includes('@')) {
+    if (!txtEmail.value.includes('@')) {
         let liError = document.createElement('li');
         liError.innerText = 'Adres emaii musi zawierać @';
         errors.appendChild(liError);
-}
+    }
 
     if (!agree1.checked) {
         let liError = document.createElement('li');
         liError.innerText = 'Nie wyraziłeś zgody 1 !';
         errors.appendChild(liError);
-}
-
-    if (erros.children.length > 0){
-        event.preventDefault();
     }
 
+    if (errors.children.length > 0){
+        event.preventDefault();
+    }
+}
 
 
 const allAgree = (event) => {
